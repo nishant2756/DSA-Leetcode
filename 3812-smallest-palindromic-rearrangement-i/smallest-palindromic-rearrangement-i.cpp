@@ -1,7 +1,7 @@
 class Solution {
 public:
     std::string smallestPalindrome(string s) {
-        int n = s.length();
+        int n = s.size();
       
         sort(s.begin(), s.end());
 
