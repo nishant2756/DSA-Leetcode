@@ -1,26 +1,27 @@
 class Solution {
 public:
-// this problem solved by stack
-    bool isValid(string s) {
-        stack<char> st;
-
-        for(int i=0; i<s.size(); i++){
-            if(s[i] == '(' || s[i] == '{' || s[i] == '['){ // opening
-                st.push(s[i]);
-            }else{ // closing
-                if(st.size() == 0){
-                    return false;
-                }
-                if((st.top() == '(' && s[i] == ')') ||
-                (st.top() == '[' && s[i] == ']')||
-                (st.top() == '{' && s[i] == '}')){
-                    st.pop();
-                }else{ // no match
-                 return false;
-
-                }
-            }
-        }
-        return st.size() == 0;
+    bool isMatch(char &s1, char &s2){
+        return ((s1 == '(' && s2==')') || (s1=='{' && s2=='}') || (s1=='[' && s2==']'));
     }
+    bool isValid(string s) {
+        stack<char>st;
+       
+        for(int i=0; i<s.size(); i++)
+
+        if(s[i] == '(' || s[i] == '{' || s[i] == '[')
+            st.push(s[i]);
+
+        else{
+            if(st.empty())
+                return false; 
+                else if(isMatch(st.top(), s[i]))
+                    st.pop();
+                    
+                else 
+                    return false;
+        }
+                
+                return (st.empty());
+            
+        }
 };
